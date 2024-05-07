@@ -15,7 +15,39 @@
     <script src="../react/build/react-dom.js"></script>
 
     <script>
-      // ここにReactのコードを記述する
+function countryList(props) {
+  return React.createElement(
+    "ul",
+    { className: "countrys" },
+    props.countrys.map((name, i) =>
+        React.createElement("li", {key: i}, name)
+    )
+  );
+};
+
+// 国名
+const asia = [
+    "Japan",
+    "Korea",
+    "China",
+    "India",
+    "Singapore"
+];
+const europa = [
+    "Iceland",
+    "French",
+    "Germany",
+    "Italia"
+];
+
+// 描画
+ReactDOM.render(
+    React.createElement("section", null,
+        React.createElement(countryList, {countrys:asia}, null),
+        React.createElement(countryList, {countrys:europa}, null)
+    ),
+    document.getElementById('react-container')
+);
     </script>
   </body>
 </html>
