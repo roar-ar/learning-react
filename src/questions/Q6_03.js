@@ -41,7 +41,7 @@ const members = [
   }
 ];
 
-export default function Q6_02() {
+export default function Q6_03() {
 
   // 変数定義や関数を記載する
   return (
@@ -51,12 +51,18 @@ export default function Q6_02() {
       {/* ↓↓↓ 描画する内容を書く ↓↓↓ */}
         <p>members</p>
         <ul>
-          <li>
-            <p>名前:<span>A</span>さん</p>
-            <p>年齢:<span>20</span>歳</p>
-            <p>身長:<span>160</span>cm</p>
-            <p>体重:<span>50</span>kg</p>
-          </li>
+          {
+            members.map((member) => {
+              return (
+                <li style={{"border-bottom": "solid 1px"}}>
+                  <p>名前:<span>{member.name}</span>さん</p>
+                  <p>年齢:<span>{member.age}</span>歳</p>
+                  <p>身長:<span>{member.height}</span>cm</p>
+                  <p>体重:<span>{member.weight}</span>kg</p>
+                </li>
+              );
+            })
+          }
         </ul>
       {/* ↑↑↑ 描画する内容を書く ↑↑↑ */}
       </div>

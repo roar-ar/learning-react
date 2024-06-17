@@ -43,23 +43,30 @@ const members = [
   }
 ];
 
-export default function Q6_02() {
+export default function Q6_04() {
 
   // 変数定義や関数を記載する
-
   return (
     <div className='question-wrap'>
-      <h1 className='question-title'>Q6_01</h1>
+      <h1 className='question-title'>Q6_04</h1>
       <div className='question-content'>
       {/* ↓↓↓ 描画する内容を書く ↓↓↓ */}
         <p>members</p>
         <ul>
-          <li>
-            <p>名前:<span>A</span>さん</p>
-            <p>年齢:<span>20</span>歳</p>
-            <p>身長:<span>160</span>cm</p>
-            <p>体重:<span>50</span>kg</p>
-          </li>
+          {
+            members
+            .filter((member) => 20 <= member.age && member.age <= 29)
+            .map((member) => {
+              return (
+                <li style={{"border-bottom": "solid 1px"}}>
+                  <p>名前:<span>{member.name}</span>さん</p>
+                  <p>年齢:<span>{member.age}</span>歳</p>
+                  <p>身長:<span>{member.height}</span>cm</p>
+                  <p>体重:<span>{member.weight}</span>kg</p>
+                </li>
+              );
+            })
+          }
         </ul>
       {/* ↑↑↑ 描画する内容を書く ↑↑↑ */}
       </div>

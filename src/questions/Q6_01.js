@@ -18,12 +18,21 @@ export default function Q6_01() {
   // 変数定義や関数を記載する
   const message = "Hello World!"
 
+  const h1 = React.createElement('h1', null, message);
+  const div = React.createElement('div', null, message);
+  const p = React.createElement('p', null, message);
+
   return (
     <div className='question-wrap'>
       <h1 className='question-title'>Q6_01</h1>
       <div className='question-content'>
       {/* ↓↓↓ 描画する内容を書く ↓↓↓ */}
-
+      <p>h1 tag</p>
+      {h1}
+      <p>div tag</p>
+      {div}
+      <p>p tag</p>
+      {p}
       {/* ↑↑↑ 描画する内容を書く ↑↑↑ */}
       </div>
     </div>

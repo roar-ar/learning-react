@@ -60,5 +60,13 @@ export default function Q6_05() {
 }
 
 // コンポーネントを追記する
-// function component() {
-// }
+function component(props) {
+  return (
+    <li style={{"border-bottom": "solid 1px"}}>
+      <p>名前:<span>{props.member.name}</span>さん</p>
+      <p>年齢:<span>{props.member.age}</span>歳</p>
+      <p>身長:<span>{props.member.height}</span>cm</p>
+      <p>体重:<span>{props.member.weight}</span>kg</p>
+    </li>
+  );
+}
