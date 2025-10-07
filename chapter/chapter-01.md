@@ -1,8 +1,7 @@
 # chapter-01 Reactの基本
 
 
-※以降、 `base.html` をコピーし、名前をチャプター名に変更したファイルを編集する。  
-　例：src/chapter-01-1.html
+このチャプターでは `base.html` を編集します
 
 
 ## 01-1. React要素の描画
