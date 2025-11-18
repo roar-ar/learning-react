@@ -2,8 +2,8 @@ import "../css/pokeDex.css";
 
 import { useEffect, useMemo, useState } from "react";
 import Header from "./components/Header";
-import Card from "./components/Card";
-import Modal from "./components/Modal";
+// import Card from "./components/Card";
+// import Modal from "./components/Modal";
 import usePagination from "./hooks/usePagination";
 
 export default function PokeDex() {
@@ -15,15 +15,15 @@ export default function PokeDex() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(8);
 
-  useEffect(() => {
-    fetch("/data/pokedex.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to load pokedex.json");
-        return res.json();
-      })
-      .then((data) => setItems(data))
-      .catch((err) => setError(err.message));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/data/pokedex.json")
+  //     .then((res) => {
+  //       if (!res.ok) throw new Error("Failed to load pokedex.json");
+  //       return res.json();
+  //     })
+  //     .then((data) => setItems(data))
+  //     .catch((err) => setError(err.message));
+  // }, []);
 
   const total = items.length;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
