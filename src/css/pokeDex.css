@@ -178,8 +178,9 @@ body {
   gap: 12px;
 }
 .modal .body img {
-  width: 100%;
+  width: 50%;
   height: auto;
+  margin: auto;
   border-radius: 12px;
 }
 .close-btn {
@@ -192,4 +193,47 @@ body {
 }
 .muted {
   color: var(--muted);
+}
+
+/* progress/stat */
+.stats {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+.stats h4 {
+  margin: 8px 0 4px 0;
+}
+.stat-row {
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  gap: 10px;
+  align-items: center;
+}
+.stat-label {
+  font-weight: 600;
+}
+.stat-val {
+  text-align: right;
+  color: var(--muted);
+}
+.progress {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.progress-fill {
+  position: absolute;
+  inset: 0 0 0 0;
+  transform-origin: left center;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 211, 238, 0.6),
+    rgba(34, 211, 238, 1)
+  );
+}
+.small {
+  font-size: 12px;
 }

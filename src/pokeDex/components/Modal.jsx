@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import StatusBar from "./StatusBar";
 
 export default function Modal({ item, onClose }) {
   const ref = useRef(null);
@@ -27,7 +28,24 @@ export default function Modal({ item, onClose }) {
           <img src={item.image.hires} alt={item.name.japanese} />
           <div>
             <div><strong>ID:</strong> {item.id}</div>
-            <div><strong>Path:</strong> <code>{item.image.hires}</code></div>
+            <div><strong>Name:</strong> {item.name.japanese}</div>
+            <div><strong>タイプ:</strong> {item.type.join('・')}</div>
+            <div><strong>HP:</strong> {item.base.HP}</div>
+            <div><strong>こうげき:</strong> {item.base.Attack}</div>
+            <div><strong>ぼうぎょ:</strong> {item.base.Defense}</div>
+            <div><strong>とくこう:</strong> {item.base["Sp. Attack"]}</div>
+            <div><strong>とくぼう:</strong> {item.base["Sp. Defense"]}</div>
+            <div><strong>すばやさ:</strong> {item.base.Speed}</div>
+            <div><strong>説明:</strong> {item.description}</div>
+          </div>
+          <div className="stats">
+            <h4>ステータス</h4>
+            <StatusBar label="HP" value={item.base.HP ?? 0} maxRef={100} />
+            <StatusBar label="こうげき" value={item.base.Attack ?? 0} maxRef={100} />
+            <StatusBar label="ぼうぎょ" value={item.base.Defense ?? 0} maxRef={100} />
+            <StatusBar label="とくこう" value={item.base["Sp. Attack"] ?? 0} maxRef={100} />
+            <StatusBar label="とくぼう" value={item.base["Sp. Defense"] ?? 0} maxRef={100} />
+            <StatusBar label="すばやさ" value={item.base.Speed ?? 0} maxRef={100} />
           </div>
         </div>
       </div>
