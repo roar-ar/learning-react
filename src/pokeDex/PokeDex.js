@@ -28,11 +28,17 @@ export default function PokeDex() {
   // 検索
   const [query, setQuery] = useState("");
   const filtered = useMemo(() => {
+
+    // 検索文字列を取得
     const q = query.trim().toLowerCase();
+    // 検索文字列がない場合はすべて返却
     if (!q) return items;
-    return items.filter((it) =>
-      (it.name.japanese ?? "").toLowerCase().includes(q)
+
+    // 文字列の場合
+    return items.filter((item) =>
+      (item.name.japanese ?? "").toLowerCase().includes(q)
     );
+
   }, [items, query]);
 
   const total = filtered.length;
