@@ -237,3 +237,18 @@ body {
 .small {
   font-size: 12px;
 }
+
+/* search */
+.search-input {
+  appearance: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 12px;
+  min-width: 220px;
+}
+.search-input::placeholder {
+  color: var(--muted);
+}

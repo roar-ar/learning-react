@@ -3,6 +3,18 @@ import { createPortal } from "react-dom";
 import StatusBar from "./StatusBar";
 
 export default function Modal({ item, onClose }) {
+
+  // プログレスバーの最大値を算出
+  const maxRef = Math.max(
+    item.base.HP,
+    item.base.Attack,
+    item.base.Defense,
+    item.base["Sp. Attack"],
+    item.base["Sp. Defense"],
+    100
+  );
+
+  // モーダルを閉じる系の処理
   const ref = useRef(null);
   useEffect(() => {
     const onKey = (e) => {
@@ -40,12 +52,12 @@ export default function Modal({ item, onClose }) {
           </div>
           <div className="stats">
             <h4>ステータス</h4>
-            <StatusBar label="HP" value={item.base.HP ?? 0} maxRef={100} />
-            <StatusBar label="こうげき" value={item.base.Attack ?? 0} maxRef={100} />
-            <StatusBar label="ぼうぎょ" value={item.base.Defense ?? 0} maxRef={100} />
-            <StatusBar label="とくこう" value={item.base["Sp. Attack"] ?? 0} maxRef={100} />
-            <StatusBar label="とくぼう" value={item.base["Sp. Defense"] ?? 0} maxRef={100} />
-            <StatusBar label="すばやさ" value={item.base.Speed ?? 0} maxRef={100} />
+            <StatusBar label="HP" value={item.base.HP ?? 0} maxRef={maxRef} />
+            <StatusBar label="こうげき" value={item.base.Attack ?? 0} maxRef={maxRef} />
+            <StatusBar label="ぼうぎょ" value={item.base.Defense ?? 0} maxRef={maxRef} />
+            <StatusBar label="とくこう" value={item.base["Sp. Attack"] ?? 0} maxRef={maxRef} />
+            <StatusBar label="とくぼう" value={item.base["Sp. Defense"] ?? 0} maxRef={maxRef} />
+            <StatusBar label="すばやさ" value={item.base.Speed ?? 0} maxRef={maxRef} />
           </div>
         </div>
       </div>

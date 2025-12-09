@@ -25,23 +25,33 @@ export default function PokeDex() {
       .catch((err) => setError(err.message));
   }, []);
 
-  const total = items.length;
+  // 検索
+  const [query, setQuery] = useState("");
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return items;
+    return items.filter((it) =>
+      (it.name.japanese ?? "").toLowerCase().includes(q)
+    );
+  }, [items, query]);
+
+  const total = filtered.length;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
   useEffect(() => {
     if (page > totalPages) setPage(totalPages);
   }, [totalPages, page]);
 
-  const pageItems = useMemo(() => {
-    const start = (page - 1) * pageSize;
-    return items.slice(start, start + pageSize);
-  }, [items, page, pageSize]);
-
+  const pageItems = useMemo(
+    () =>
+      filtered.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize),
+    [filtered, page, pageSize]
+  );
   const pageList = usePagination(total, pageSize, page, 1);
 
   return (
     <>
-      <Header />
+      <Header query={query} onQueryChange={setQuery} />
       <main className="container">
         {error && <p style={{ color: "#fca5a5" }}>読み込みエラー: {error}</p>}
 
